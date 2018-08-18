@@ -9,10 +9,41 @@
     <android.support.design.widget.TextInputEditText
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textInputEditText1" />
+        p1:id="@+id/textInputEditText1"
+        p1:textSize="30dp" />
     <Button
-        p1:text="Button"
+        p1:text="전송하기"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/sendLetter" />
+        p1:id="@+id/sendLetter"
+        p1:layout_marginTop="5dp"
+        p1:textSize="20dp"
+        p1:textStyle="bold"
+        p1:background="#ff262776"
+        p1:layout_marginRight="15dp"
+        p1:layout_marginLeft="15dp"
+        p1:textColor="#ffffffff" />
+    <TextView
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/ResultView"
+        p1:layout_marginTop="15dp"
+        p1:layout_weight="1"
+        p1:gravity="center"
+        p1:textSize="40dp"
+        p1:layout_marginRight="15dp"
+        p1:layout_marginLeft="15dp" />
+    <Button
+        p1:text="결과보기"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/Resultbutton"
+        p1:layout_marginBottom="15dp"
+        p1:layout_marginTop="10dp"
+        p1:textSize="20dp"
+        p1:textStyle="bold"
+        p1:background="#ff262776"
+        p1:layout_marginLeft="15dp"
+        p1:layout_marginRight="15dp"
+        p1:textColor="#ffffffff" />
 </LinearLayout>
