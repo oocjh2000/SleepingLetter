@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace SleepingLetter
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "자니?", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
         EditText Letter;
@@ -44,7 +44,7 @@ namespace SleepingLetter
             {
                 letter.Message = Letter.Text;
                 var req = new HttpRequestMessage();
-                req.RequestUri = new Uri("http://192.168.56.1:12358/accept");
+                req.RequestUri = new Uri("http://61.82.138.72:12358/accept");
 
 
 
@@ -52,12 +52,12 @@ namespace SleepingLetter
                 var client = new HttpClient();
                 var res = await client.GetAsync(req.RequestUri);
               
-                req.RequestUri = new Uri("http://192.168.56.1:12358/2");
+                req.RequestUri = new Uri("http://61.82.138.72:12358/2");
                 ResultView.Text = "메세지를 보냈습니다.";
                 Log.Debug("HTTP", res.Content.ReadAsStringAsync().ToString());
                 if (res.StatusCode == HttpStatusCode.OK)
                 {
-                    toast = Toast.MakeText(this, "까였네? 병신", ToastLength.Short);
+                    toast = Toast.MakeText(this, "까였네? ^^", ToastLength.Short);
                     toast.Show();
                     res = await client.PutAsync(req.RequestUri, req.Content);
                 }
@@ -105,7 +105,7 @@ namespace SleepingLetter
                 letter.Message = Letter.Text;
                 var req = new HttpRequestMessage
                 {
-                    RequestUri = new Uri("http://192.168.56.1:12358"),
+                    RequestUri = new Uri("http://61.82.138.72:12358"),
                     Content = new StringContent(JsonConvert.SerializeObject(letter), Encoding.UTF8, "application/json")
                 };
 
