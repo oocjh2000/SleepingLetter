@@ -20,7 +20,7 @@ namespace SleepingLetter
         Button Resultbutton;
         TextView ResultView;
         letter letter;
-        
+        string ServerIP = "192.168.56.1";
         Toast toast;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -42,9 +42,10 @@ namespace SleepingLetter
         {
             try
             {
+                ResultView.Text = string.Empty;
                 letter.Message = Letter.Text;
                 var req = new HttpRequestMessage();
-                req.RequestUri = new Uri("http://192.168.56.1:12358/accept");
+                req.RequestUri = new Uri("http://" + ServerIP + ":12358/accept");
 
 
 
@@ -52,7 +53,7 @@ namespace SleepingLetter
                 var client = new HttpClient();
                 var res = await client.GetAsync(req.RequestUri);
               
-                req.RequestUri = new Uri("http://192.168.56.1:12358/2");
+                req.RequestUri = new Uri("http://" + ServerIP + ":12358/2");
                 ResultView.Text = "메세지를 보냈습니다.";
                 Log.Debug("HTTP", res.Content.ReadAsStringAsync().ToString());
                 if (res.StatusCode == HttpStatusCode.OK)
@@ -77,6 +78,7 @@ namespace SleepingLetter
             catch (Exception ex)
             {
                 toast = Toast.MakeText(this, "뭔가 문제가 생긴듯ㅎㅎ", ToastLength.Long);
+                toast.Show();
                 Log.Debug("Http", ex.Message);
             }
 
@@ -86,10 +88,11 @@ namespace SleepingLetter
         {
             try
             {
+                
                 letter.Message = Letter.Text;
                 var req = new HttpRequestMessage
                 {
-                    RequestUri = new Uri("http://192.168.56.1:12358"),
+                    RequestUri = new Uri("http://"+ServerIP+":12358"),
                     Content = new StringContent(JsonConvert.SerializeObject(letter), Encoding.UTF8, "application/json")
                 };
 
@@ -102,6 +105,7 @@ namespace SleepingLetter
             }catch(Exception ex)
             {
                 toast = Toast.MakeText(this, "뭔가 문제가 생긴듯ㅎㅎ", ToastLength.Long);
+                toast.Show();
                 Log.Debug("Http", ex.Message);
             }
               
